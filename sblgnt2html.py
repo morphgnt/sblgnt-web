@@ -113,7 +113,7 @@ print """
             }
         </style>
     </head>
-    <body data-spy="scroll" data-target="#chapter-nav">
+    <body>
         <div id="chapter-nav" class="header">
             <ul class="nav">
 """
@@ -279,9 +279,22 @@ print """
             </div>
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="bootstrap-scrollspy.js"></script>
         <script>
             $(function() {
+                function update() {
+                    var window_start = $(window).scrollTop();
+                    var window_end = window_start + $(window).height();
+                    var chp2 = $("#chapter-2");
+                    var chp2_start = chp2.offset().top;
+                    var chp2_end = chp2_start + chp2.height();
+                    if (chp2_start < window_end && chp2_end > window_start) {
+                        $("a[href='#chapter-2']").parent().addClass("active");
+                    } else {
+                        $("a[href='#chapter-2']").parent().removeClass("active");
+                    }
+                }
+                $(window).bind("scroll", update);
+                $(window).bind("resize", update);
                 $(".verse_num").hover(
                     function() {
                         $("#text").addClass("lowlight");
