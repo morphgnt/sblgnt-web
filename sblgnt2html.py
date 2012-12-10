@@ -283,23 +283,21 @@ print """
             $(function() {
                 var positions = [];
                 $(".chapter").each(function(i, e) {
-                    positions[positions.length + 1] = {
+                    positions[positions.length] = {
                         start: $(e).offset().top,
                         end: $(e).offset().top + $(e).height(),
-                        id: $(e).attr("id"),
-                        e: e
+                        id: $(e).attr("id")
                     }
                 });
                 function update() {
                     var window_start = $(window).scrollTop();
                     var window_end = window_start + $(window).height();
-                    var chp2 = $("#chapter-2");
-                    var chp2_start = chp2.offset().top;
-                    var chp2_end = chp2_start + chp2.height();
-                    if (chp2_start < window_end && chp2_end > window_start) {
-                        $("a[href='#chapter-2']").parent().addClass("active");
-                    } else {
-                        $("a[href='#chapter-2']").parent().removeClass("active");
+                    for (var i=0; i<positions.length; i++) {
+                        if (window_start <= positions[i].start && window_start >= positions[i].end) {
+                            $("a[href=#" + positions[i].id + "]").parent().addClass("active");
+                        } else {
+                            $("a[href=#" + positions[i].id + "]").parent().removeClass("active");
+                        }
                     }
                 }
                 $(window).bind("scroll", update);
