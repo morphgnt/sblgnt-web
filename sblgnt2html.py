@@ -9,6 +9,7 @@ print """
         <style>
             body {
                 font-family: sans-serif;
+                margin: 0;
             }
             h1 {
                 margin-top: 50px;
@@ -33,7 +34,8 @@ print """
                 font-size: 10pt;
                 text-align: right;
             }
-            .nav li.active {
+            .nav li.active a {
+                background: #EEE;
                 font-weight: bold;
             }
             .nav a {
@@ -109,7 +111,8 @@ print """
                 line-height: 16pt;
             }
             .word:hover {
-                font-weight: bold;
+                background: #FF6;
+                color: black;
             }
         </style>
     </head>
@@ -310,6 +313,7 @@ print """
                 }
                 $(window).bind("scroll", update);
                 $(window).bind("resize", update);
+                update();
                 $(".verse_num").hover(
                     function() {
                         $("#text").addClass("lowlight");
