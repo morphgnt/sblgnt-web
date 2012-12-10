@@ -257,7 +257,7 @@ for line in open("61-Mt-morphgnt.txt"):
         if last_chapter:
             print """</span>"""
             print """</div>"""
-        print """<div id="chapter-{chapter}">""".format(chapter=chapter)
+        print """<div id="chapter-{chapter}" class="chapter">""".format(chapter=chapter)
         last_chapter = chapter
         last_verse = 0
     if verse != last_verse:
