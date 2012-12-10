@@ -296,14 +296,14 @@ print """
                     
                     for (var i=0; i<positions.length; i++) {
                         if (window_start <= positions[i].end && window_end >= positions[i].start) {
-                            console.log(positions[i].id)
-                            console.log(positions[i].selected, positions[i].selected != positions[i].id, positions[i].selected !== positions[i].id)
-                            if (positions[i].id != positions[i].selected) {
+                            if (!positions[i].selected) {
                                 $("a[href=#" + positions[i].id + "]").parent().addClass("active");
-                                positions[i].selected = positions[i].id;
-                            } else if (positions[i].selected != null) {
+                                positions[i].selected = true;
+                            }
+                        } else {
+                            if (positions[i].selected) {
                                 $("a[href=#" + positions[i].selected + "]").parent().removeClass("active");
-                                positions[i].selected = null;
+                                positions[i].selected = false;
                             }
                         }
                     }
