@@ -281,6 +281,15 @@ print """
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script>
             $(function() {
+                var positions = [];
+                $(".chapter").each(function(i, e) {
+                    positions[positions.length + 1] = {
+                        start: $(e).offset().top,
+                        end: $(e).offset().top + $(e).height(),
+                        id: $(e).attr("id"),
+                        e: e
+                    }
+                });
                 function update() {
                     var window_start = $(window).scrollTop();
                     var window_end = window_start + $(window).height();
