@@ -292,11 +292,11 @@ print """
                 function update() {
                     var window_start = $(window).scrollTop();
                     var window_end = window_start + $(window).height();
+                    
                     for (var i=0; i<positions.length; i++) {
-                        if (window_start <= positions[i].start && window_start >= positions[i].end) {
-                            $("a[href=#" + positions[i].id + "]").parent().addClass("active");
+                        if (window_start <= positions[i].end && window_start >= positions[i].start) {
+                            console.log(positions[i].id)
                         } else {
-                            $("a[href=#" + positions[i].id + "]").parent().removeClass("active");
                         }
                     }
                 }
