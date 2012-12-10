@@ -286,7 +286,8 @@ print """
                     positions[positions.length] = {
                         start: $(e).offset().top,
                         end: $(e).offset().top + $(e).height(),
-                        id: $(e).attr("id")
+                        id: $(e).attr("id"),
+                        selected: null
                     }
                 });
                 function update() {
@@ -294,9 +295,16 @@ print """
                     var window_end = window_start + $(window).height();
                     
                     for (var i=0; i<positions.length; i++) {
-                        if (window_start <= positions[i].end && window_start >= positions[i].start) {
+                        if (window_start <= positions[i].end && window_end >= positions[i].start) {
                             console.log(positions[i].id)
-                        } else {
+                            console.log(positions[i].selected, positions[i].selected != positions[i].id, positions[i].selected !== positions[i].id)
+                            if (positions[i].id != positions[i].selected) {
+                                $("a[href=#" + positions[i].id + "]").parent().addClass("active");
+                                positions[i].selected = positions[i].id;
+                            } else if (positions[i].selected != null) {
+                                $("a[href=#" + positions[i].selected + "]").parent().removeClass("active");
+                                positions[i].selected = null;
+                            }
                         }
                     }
                 }
