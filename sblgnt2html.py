@@ -302,7 +302,7 @@ print """
                             }
                         } else {
                             if (positions[i].selected) {
-                                $("a[href=#" + positions[i].selected + "]").parent().removeClass("active");
+                                $("a[href=#" + positions[i].id + "]").parent().removeClass("active");
                                 positions[i].selected = false;
                             }
                         }
