@@ -144,7 +144,7 @@ def generate(book_title, input_filename, output_filename, chapter_count):
     print >> output, """
         <body>
             <div id="chapter-nav" class="header">
-                <div class="site_title"><a href="/">MorphGNT SBLGNT</a></div>
+                <div class="site_title"><a href="index.html">MorphGNT SBLGNT</a></div>
                 <ul class="nav">
                 <li class="book_title">{book_title}</li>
     """.format(book_title=book_title)
