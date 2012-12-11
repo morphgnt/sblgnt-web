@@ -144,7 +144,7 @@ def generate(book_title, input_filename, output_filename, chapter_count):
     print >> output, """
         <body>
             <div id="chapter-nav" class="header">
-                <div class="site_title"><a href="index.html">MorphGNT SBLGNT</a></div>
+                <div class="site_title"><a href="./">MorphGNT SBLGNT</a></div>
                 <ul class="nav">
                 <li class="book_title">{book_title}</li>
     """.format(book_title=book_title)
@@ -369,6 +369,19 @@ def generate(book_title, input_filename, output_filename, chapter_count):
                         }
                     )
                 });
+            </script>
+            <script type="text/javascript">
+                var _gauges = _gauges || [];
+                (function() {
+                    var t   = document.createElement('script');
+                    t.type  = 'text/javascript';
+                    t.async = true;
+                    t.id    = 'gauges-tracker';
+                    t.setAttribute('data-site-id', '4f27e326613f5d3dd1000008');
+                    t.src = '//secure.gaug.es/track.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(t, s);
+                })();
             </script>
         </body>
     </html>
