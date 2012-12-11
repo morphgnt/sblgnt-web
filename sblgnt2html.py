@@ -37,7 +37,7 @@ def generate(book_title, input_filename, output_filename, chapter_count):
                     margin: 0;
                     padding: 0;
                     list-style: none;
-                    width: 140px;
+                    width: 160px;
                     font-weight: 100;
                     font-size: 10pt;
                     text-align: right;
@@ -122,12 +122,32 @@ def generate(book_title, input_filename, output_filename, chapter_count):
                     background: #FF6;
                     color: black;
                 }
+                .book_title {
+                    font-weight: bold;
+                }
+                .site_title {
+                    margin-top: 20px;
+                    text-align: right;
+                }
+                .site_title a {
+                    text-decoration: none;
+                    color: black;
+                    font-weight: bold;
+                }
+                .site_title a:hover {
+                    color: #666;
+                }
             </style>
         </head>
+    """
+    
+    print >> output, """
         <body>
             <div id="chapter-nav" class="header">
+                <div class="site_title"><a href="/">MorphGNT SBLGNT</a></div>
                 <ul class="nav">
-    """
+                <li class="book_title">{book_title}</li>
+    """.format(book_title=book_title)
 
     for i in range(1, chapter_count + 1):
         print >> output, """<li><a href="#chapter-{chapter}">{chapter}</a></li>""".format(chapter=i)
